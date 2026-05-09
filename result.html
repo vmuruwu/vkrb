@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Результаты теста — WELLLAB</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="index.html" class="logo">
+    <div class="logo-icon">🌿</div>
+    WELLLAB
+  </a>
+  <nav class="header-nav">
+    <a href="index.html">← На главную</a>
+    <a href="test.html">Пройти тест снова</a>
+  </nav>
+</header>
+
+<main class="main-content" style="max-width:780px;">
+
+  <!-- BREADCRUMBS -->
+  <nav class="breadcrumbs">
+    <a href="#">Главная</a>
+    <span class="sep">›</span>
+    <a href="index.html">Подбор БАД</a>
+    <span class="sep">›</span>
+    <span>Результаты теста</span>
+  </nav>
+
+  <!-- RESULT HERO -->
+  <div class="result-hero">
+    <span class="result-check">✅</span>
+    <h1 class="result-title">Вы успешно прошли тест!</h1>
+    <p class="result-subtitle" id="result-desc">
+      На основе ваших ответов мы подобрали оптимальную программу БАД, которая поможет улучшить ваше самочувствие.
+    </p>
+    <div class="result-program-name" id="program-badge">Определяется...</div>
+  </div>
+
+  <!-- RECOMMENDATIONS -->
+  <div style="margin-bottom:28px;">
+    <div class="section-title">
+      <span class="section-icon">⭐</span>
+      Рекомендуем вам
+    </div>
+
+    <!-- Program image placeholder -->
+    <div style="background:linear-gradient(135deg,#d4ede1,#a8d4bc);border-radius:var(--radius);height:180px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;overflow:hidden;">
+      <div style="text-align:center;">
+        <div style="font-size:4rem;" id="program-emoji">🌿</div>
+        <div style="font-weight:800;color:var(--green-dark);margin-top:8px;font-size:1.1rem;" id="program-name-display">Ваша программа</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BENEFITS -->
+  <div style="margin-bottom:28px;">
+    <div class="section-title">
+      <span class="section-icon">💎</span>
+      Преимущества программы
+    </div>
+    <div class="benefits-grid" id="benefits-grid">
+      <!-- Filled by JS -->
+    </div>
+  </div>
+
+  <!-- COMPOSITION -->
+  <div style="margin-bottom:28px;">
+    <div class="section-title">
+      <span class="section-icon">📦</span>
+      Состав программы
+    </div>
+    <div class="products-grid" id="products-grid">
+      <!-- Filled by JS -->
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <div>
+      <div class="cta-total">
+        Итого: <span id="total-price">0 ₽</span>
+      </div>
+      <div class="cta-sub">Стоимость выбранных товаров программы</div>
+    </div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+      <a href="#" class="btn-download" id="btn-pdf" download>
+        📄 Скачать инструкцию
+      </a>
+      <button class="btn-accent" id="btn-order" onclick="placeOrder()">
+        🛒 Оформить заказ
+      </button>
+    </div>
+  </div>
+
+  <!-- RESTART -->
+  <div style="text-align:center;margin-top:24px;">
+    <a href="test.html" class="btn-secondary" style="font-size:0.88rem;">
+      ↩ Пройти тест заново
+    </a>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  © 2025 WELLLAB. Все права защищены. Продукция не является лекарственным средством.
+</footer>
+
+<script>
+// ===================== PROGRAM DATA =====================
+
+const PROGRAMS = {
+  'Иммунитет и энергия 1': {
+    emoji: '🛡️',
+    description: 'Отличный результат! Ваш иммунитет в хорошей форме. Базовая программа поддержит защитные силы организма и обеспечит стабильный уровень энергии на каждый день.',
+    benefits: [
+      'Поддержка естественного иммунитета',
+      'Профилактика сезонных ОРВИ',
+      'Заряд бодрости и энергии',
+      'Антиоксидантная защита клеток'
+    ],
+    products: [
+      { name: 'Иммуно Комплекс', article: 'WL-11201', price: 1890, icon: '🛡️' },
+      { name: 'Витамин C 1000', article: 'WL-11202', price: 1250, icon: '🍊' },
+      { name: 'Цинк + Селен', article: 'WL-11203', price: 980, icon: '⚡' }
+    ]
+  },
+  'Иммунитет и энергия 2': {
+    emoji: '🛡️',
+    description: 'Ваш иммунитет нуждается в дополнительной поддержке. Усиленная программа поможет восстановить защитные функции, наполнить организм энергией и повысить устойчивость к инфекциям.',
+    benefits: [
+      'Укрепление иммунного ответа',
+      'Борьба с хронической усталостью',
+      'Поддержка после антибиотиков',
+      'Антистрессовая защита'
+    ],
+    products: [
+      { name: 'Иммуно Комплекс Форте', article: 'WL-11211', price: 2190, icon: '🛡️' },
+      { name: 'Витамин D3 + K2', article: 'WL-11212', price: 1490, icon: '☀️' },
+      { name: 'Омега-3 ДГК', article: 'WL-11213', price: 1790, icon: '🐟' },
+      { name: 'Цинк + Селен Актив', article: 'WL-11214', price: 1100, icon: '⚡' }
+    ]
+  },
+  'Иммунитет и энергия 3': {
+    emoji: '🛡️',
+    description: 'Ваш организм требует комплексного восстановления. Максимальная программа разработана для глубокой поддержки иммунитета, восстановления после заболеваний и зарядки энергией.',
+    benefits: [
+      'Глубокое восстановление иммунитета',
+      'Устранение хронического дефицита витаминов',
+      'Энергетическая поддержка митохондрий',
+      'Противовоспалительный эффект',
+      'Восстановление микробиома'
+    ],
+    products: [
+      { name: 'Иммуно Комплекс Макс', article: 'WL-11221', price: 2590, icon: '🛡️' },
+      { name: 'Витамин D3 5000 МЕ', article: 'WL-11222', price: 1690, icon: '☀️' },
+      { name: 'Омега-3 Премиум', article: 'WL-11223', price: 2190, icon: '🐟' },
+      { name: 'Пробиотик Комплекс', article: 'WL-11224', price: 1890, icon: '🦠' },
+      { name: 'Коэнзим Q10', article: 'WL-11225', price: 2100, icon: '⚡' }
+    ]
+  },
+  'Зрение 1': {
+    emoji: '👁️',
+    description: 'Ваши глаза в целом здоровы. Базовая программа для зрения обеспечит профилактическую поддержку и защиту от негативного воздействия экранов и ультрафиолета.',
+    benefits: [
+      'Профилактика усталости глаз',
+      'Защита от синего света',
+      'Поддержка цветового зрения',
+      'Антиоксидантная защита сетчатки'
+    ],
+    products: [
+      { name: 'Черника Форте', article: 'WL-21101', price: 1390, icon: '🫐' },
+      { name: 'Лютеин + Зеаксантин', article: 'WL-21102', price: 1790, icon: '👁️' },
+      { name: 'Витамин А', article: 'WL-21103', price: 890, icon: '🥕' }
+    ]
+  },
+  'Зрение 2': {
+    emoji: '👁️',
+    description: 'Ваши глаза испытывают повышенную нагрузку и нуждаются в серьёзной поддержке. Усиленная программа восстановит зрительные функции, снимет синдром сухого глаза и укрепит сосуды глаз.',
+    benefits: [
+      'Устранение синдрома сухого глаза',
+      'Восстановление при напряжении зрения',
+      'Укрепление сосудов сетчатки',
+      'Снижение головной боли от экранов',
+      'Поддержка ночного зрения'
+    ],
+    products: [
+      { name: 'Черника Форте Макс', article: 'WL-21111', price: 1890, icon: '🫐' },
+      { name: 'Лютеин Комплекс', article: 'WL-21112', price: 2190, icon: '👁️' },
+      { name: 'Омега-3 для зрения', article: 'WL-21113', price: 1790, icon: '🐟' },
+      { name: 'Витамин A + E', article: 'WL-21114', price: 990, icon: '🥕' }
+    ]
+  },
+  'Очищение организма 1': {
+    emoji: '🌀',
+    description: 'Ваш организм справляется хорошо, но небольшая детокс-поддержка пойдёт на пользу. Мягкая программа очистит организм и улучшит общее самочувствие.',
+    benefits: [
+      'Мягкое очищение печени',
+      'Улучшение работы кишечника',
+      'Выведение токсинов',
+      'Поддержка кожи изнутри'
+    ],
+    products: [
+      { name: 'Детокс Лайт', article: 'WL-31101', price: 1590, icon: '🌿' },
+      { name: 'Клетчатка Пшеничная', article: 'WL-31102', price: 890, icon: '🌾' },
+      { name: 'Пробиотик Баланс', article: 'WL-31103', price: 1390, icon: '🦠' }
+    ]
+  },
+  'Очищение организма 2': {
+    emoji: '🌀',
+    description: 'Вашему организму нужна активная поддержка. Программа среднего уровня комплексно очистит печень и кишечник, нормализует обмен веществ и улучшит состояние кожи.',
+    benefits: [
+      'Активная детоксикация печени',
+      'Нормализация работы ЖКТ',
+      'Устранение кожных проявлений интоксикации',
+      'Борьба с лишним весом'
+    ],
+    products: [
+      { name: 'Детокс Актив', article: 'WL-31111', price: 2090, icon: '🌿' },
+      { name: 'Гепатопротектор Форте', article: 'WL-31112', price: 2390, icon: '🫀' },
+      { name: 'Пробиотик + Пребиотик', article: 'WL-31113', price: 1790, icon: '🦠' },
+      { name: 'Сорбент Природный', article: 'WL-31114', price: 990, icon: '🪨' }
+    ]
+  },
+  'Очищение организма 3': {
+    emoji: '🌀',
+    description: 'Ваш организм накопил значительную нагрузку токсинов. Интенсивная программа детоксикации полностью восстановит функции печени, кишечника и нормализует состояние кожи.',
+    benefits: [
+      'Глубокая детоксикация организма',
+      'Полное восстановление микробиома',
+      'Интенсивная поддержка печени',
+      'Борьба с хронической интоксикацией',
+      'Оздоровление кожи и волос'
+    ],
+    products: [
+      { name: 'Детокс Максимум', article: 'WL-31121', price: 2790, icon: '🌿' },
+      { name: 'Гепатопротектор Плюс', article: 'WL-31122', price: 2790, icon: '🫀' },
+      { name: 'Синбиотик Комплекс', article: 'WL-31123', price: 2190, icon: '🦠' },
+      { name: 'Сорбент + Клетчатка', article: 'WL-31124', price: 1290, icon: '🪨' },
+      { name: 'Куркумин Актив', article: 'WL-31125', price: 1890, icon: '🌸' }
+    ]
+  }
+};
+
+// ===================== STATE =====================
+let checkedProducts = [];
+let currentProgram = null;
+
+// ===================== INIT =====================
+function init() {
+  const raw = sessionStorage.getItem('testResult');
+  if (!raw) {
+    // Demo fallback
+    loadProgram('Иммунитет и энергия 2', 'Иммунитет и энергия');
+    return;
+  }
+
+  const result = JSON.parse(raw);
+  document.getElementById('program-badge').textContent = result.program;
+
+  const prog = PROGRAMS[result.program];
+  if (!prog) {
+    loadProgram('Иммунитет и энергия 2', 'Иммунитет и энергия');
+    return;
+  }
+
+  loadProgram(result.program, result.topic);
+}
+
+function loadProgram(programKey, topic) {
+  currentProgram = programKey;
+  const prog = PROGRAMS[programKey];
+
+  // Update hero
+  document.getElementById('result-desc').textContent = prog.description;
+  document.getElementById('program-badge').textContent = programKey;
+  document.getElementById('program-emoji').textContent = prog.emoji;
+  document.getElementById('program-name-display').textContent = programKey;
+
+  // Benefits
+  const grid = document.getElementById('benefits-grid');
+  grid.innerHTML = prog.benefits.map(b => `
+    <div class="benefit-card">
+      <span class="benefit-dot"></span>
+      ${b}
+    </div>
+  `).join('');
+
+  // Products
+  checkedProducts = prog.products.map(() => true);
+  renderProducts(prog);
+}
+
+function renderProducts(prog) {
+  const grid = document.getElementById('products-grid');
+  grid.innerHTML = prog.products.map((p, i) => `
+    <div class="product-card" id="product-${i}">
+      <div class="product-checkbox ${checkedProducts[i] ? '' : 'unchecked'}" id="chk-${i}" onclick="toggleProduct(${i})">
+        ${checkedProducts[i] ? `<svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 7L5.5 10.5L12 4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>` : ''}
+      </div>
+      <div class="product-icon">${p.icon}</div>
+      <div class="product-info">
+        <div class="product-name">${p.name}</div>
+        <div class="product-article">Арт. ${p.article}</div>
+      </div>
+      <div class="product-price">${p.price.toLocaleString('ru-RU')} ₽</div>
+    </div>
+  `).join('');
+
+  updateTotal(prog);
+}
+
+function toggleProduct(i) {
+  checkedProducts[i] = !checkedProducts[i];
+  const prog = PROGRAMS[currentProgram];
+  renderProducts(prog);
+}
+
+function updateTotal(prog) {
+  let total = 0;
+  prog.products.forEach((p, i) => {
+    if (checkedProducts[i]) total += p.price;
+  });
+  document.getElementById('total-price').textContent = total.toLocaleString('ru-RU') + ' ₽';
+  document.getElementById('btn-order').textContent = `🛒 Оформить заказ: ${total.toLocaleString('ru-RU')} ₽`;
+}
+
+function placeOrder() {
+  const prog = PROGRAMS[currentProgram];
+  const selected = prog.products.filter((p, i) => checkedProducts[i]);
+  const names = selected.map(p => p.name).join(', ');
+  alert(`Заказ оформляется!\n\nТовары: ${names}\n\nВ реальном сайте здесь откроется страница оформления заказа.`);
+}
+
+// ===================== RUN =====================
+init();
+</script>
+
+</body>
+</html>
