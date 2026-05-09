@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Онлайн тест — WELLLAB</title>
+  <title>Онлайн тест</title>
+  <link rel="icon" type="image/png" href="pictures/favicon.png"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
@@ -13,61 +14,60 @@
 <header class="site-header">
   <a href="index.html" class="logo">
     <div class="logo-icon">🌿</div>
-    WELLLAB
+    Тест по подбору БАД
   </a>
   <nav class="header-nav">
     <a href="index.html">← Вернуться на главную</a>
   </nav>
 </header>
 
-<main class="main-content" style="max-width:720px;">
+<main class="main-content" style="max-width:1000px;">
 
-  <!-- BREADCRUMBS -->
-  <nav class="breadcrumbs">
-    <a href="#">Главная</a>
-    <span class="sep">›</span>
-    <a href="index.html">Подбор БАД</a>
-    <span class="sep">›</span>
-    <span id="breadcrumb-step">Шаг 1/2</span>
-  </nav>
+  <!-- TITLE -->
+  <h1 class="page-title" style="margin-bottom:24px;">Онлайн тест</h1>
 
-  <!-- STEPPER -->
-  <div class="stepper-wrap">
-    <div class="stepper-header">
-      <h1 class="stepper-title">Онлайн тест</h1>
-      <span class="step-label" id="step-label">Шаг 1/2</span>
-    </div>
-    <div class="stepper-bar">
-      <div class="step-track active" id="track-1"></div>
-      <div class="step-track" id="track-2"></div>
-    </div>
-    <div class="progress-info">
-      <span id="question-counter">Вопрос 1 / 10</span>
-      <span id="step-hint">Заполните все поля для перехода к следующему шагу</span>
-    </div>
-  </div>
+  <!-- TWO-COLUMN ROW -->
+  <div style="display:flex;gap:32px;align-items:flex-start;">
 
-  <!-- QUESTION CARD -->
-  <div class="question-card" id="question-card">
-    <div class="question-meta">
-      <span class="question-num" id="q-num">Вопрос 1</span>
+    <!-- LEFT: IMAGE -->
+    <div id="question-image-wrap" style="display:none;flex-shrink:0;width:340px;">
+      <img id="question-image" src="" alt="" style="width:340px;height:340px;object-fit:cover;border-radius:var(--radius);display:block;">
     </div>
-    <div class="question-text" id="q-text">Загрузка...</div>
-    <div id="q-answer-area"></div>
-  </div>
 
-  <!-- NAV -->
-  <div class="nav-buttons">
-    <div class="nav-left">
-      <button class="btn-secondary" id="btn-back" disabled>← Назад</button>
+    <!-- RIGHT: STEPPER + QUESTION + NAV -->
+    <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:0;">
+
+      <!-- STEPPER -->
+      <div style="margin-bottom:20px;">
+        <div style="font-weight:700;font-size:1.1rem;color:var(--text);margin-bottom:10px;" id="step-label">Шаг 1/2</div>
+        <div class="stepper-bar" style="margin-bottom:10px;">
+          <div class="step-track active" id="track-1"></div>
+          <div class="step-track" id="track-2"></div>
+        </div>
+        <span style="font-size:0.88rem;color:var(--text-muted);" id="question-counter">Вопрос 1 / 10</span>
+      </div>
+
+      <!-- QUESTION CARD -->
+      <div class="question-card" id="question-card" style="margin-bottom:20px;">
+        <div class="question-text" id="q-text">Загрузка...</div>
+        <div id="q-answer-area"></div>
+      </div>
+
+      <!-- NAV -->
+      <div class="nav-buttons">
+        <div class="nav-left">
+          <button class="btn-secondary" id="btn-back" disabled>Назад</button>
+        </div>
+        <button class="btn-primary" id="btn-next" disabled>Далее</button>
+      </div>
+
     </div>
-    <button class="btn-primary" id="btn-next" disabled>Далее →</button>
   </div>
 
 </main>
 
 <footer class="site-footer">
-  © 2025 WELLLAB. Продукция не является лекарственным средством.
+  © 2026 Наталья Втюрина. ВКРБ. Автоматизация процесса подбора товаров в интернет-магазине
 </footer>
 
 <script>
@@ -200,10 +200,36 @@ function renderQuestion() {
 
   const stepLabel = state.currentStep === 1 ? 'Шаг 1/2' : 'Шаг 2/2';
   document.getElementById('step-label').textContent = stepLabel;
-  document.getElementById('breadcrumb-step').textContent = stepLabel;
   document.getElementById('question-counter').textContent = `Вопрос ${state.currentQ + 1} / ${total}`;
-  document.getElementById('q-num').textContent = `Вопрос ${state.currentQ + 1}`;
   document.getElementById('q-text').textContent = q.text;
+
+  // Question image
+  const imgWrap = document.getElementById('question-image-wrap');
+  const img = document.getElementById('question-image');
+  const anketa  = ['s1q1','s1q2','s1q3','s1q4'];
+  const diet    = ['s1q5','s1q6','s1q7','s1q8','s1q9'];
+  const systems = ['s1q10'];
+  const topicImages = {
+    'Иммунитет и энергия': 'pictures/иммунитет.jpg',
+    'Зрение':              'pictures/зрение.jpg',
+    'Очищение организма':  'pictures/детокс.jpg'
+  };
+  if (anketa.includes(q.id)) {
+    img.src = 'pictures/анкета.jpg';
+    imgWrap.style.display = 'block';
+  } else if (diet.includes(q.id)) {
+    img.src = 'pictures/диета.jpg';
+    imgWrap.style.display = 'block';
+  } else if (systems.includes(q.id)) {
+    img.src = 'pictures/системы организма.jpg';
+    imgWrap.style.display = 'block';
+  } else if (state.currentStep === 2) {
+    const topic = state.answers['s1q10'];
+    img.src = topicImages[topic] || '';
+    imgWrap.style.display = img.src ? 'block' : 'none';
+  } else {
+    imgWrap.style.display = 'none';
+  }
 
   const area = document.getElementById('q-answer-area');
   area.innerHTML = '';
@@ -304,7 +330,7 @@ function checkNextBtn() {
 
   // Update button text for last question of step 2
   const isLastStep2 = state.currentStep === 2 && state.currentQ === qs.length - 1;
-  nextBtn.textContent = isLastStep2 ? 'Получить результат →' : 'Далее →';
+  nextBtn.textContent = isLastStep2 ? 'Получить результат' : 'Далее';
 }
 
 function goNext() {

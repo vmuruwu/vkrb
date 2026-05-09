@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Тест по подбору БАД — WELLLAB</title>
+  <title>Тест по подбору БАД</title>
+  <link rel="icon" type="image/png" href="pictures/favicon.png"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
@@ -14,11 +15,9 @@
 <header class="site-header">
   <a href="index.html" class="logo">
     <div class="logo-icon">🌿</div>
-    WELLLAB
+    Тест по подбору БАД
   </a>
   <nav class="header-nav">
-    <a href="#">Каталог</a>
-    <a href="#">О бренде</a>
     <a href="index.html" style="color:var(--green)">Подобрать БАД</a>
   </nav>
 </header>
@@ -36,85 +35,57 @@
   </nav>
 
   <!-- PAGE TITLE -->
-  <h1 class="page-title" style="margin-bottom:32px;">
-    ТЕСТ ПО ПОДБОРУ<br/><span>ПРОГРАММЫ БАД</span>
+  <h1 class="page-title" style="margin-bottom:24px;">
+    ТЕСТ ПО ПОДБОРУ<br/>ПРОГРАММЫ БАД
   </h1>
 
-  <!-- HERO -->
-  <div class="welcome-hero">
-    <div class="welcome-banner">
-      <div class="welcome-banner-inner">
-        <span class="banner-emoji">🌿</span>
-        <div class="banner-label">WELLLAB — забота о здоровье</div>
-        <div style="margin-top:16px;font-size:0.88rem;color:var(--green-dark);font-weight:600;line-height:1.5;">
-          Персональная программа<br/>за 5–7 минут
-        </div>
-      </div>
-    </div>
-
-    <div class="welcome-info">
-      <p class="welcome-description">
-        Познакомьтесь с нашим новым удобным инструментом. Подберите эффективную программу БАД по наиболее актуальному для вас аспекту здоровья.
-      </p>
-      <p class="welcome-description" style="margin-bottom:16px;">
-        Тест разработан врачами-экспертами по продукции WELLLAB.
-      </p>
-
-      <ul class="welcome-features">
-        <li>
-          <span class="feature-icon">⏱️</span>
-          Тестирование займёт всего 5–7 минут
-        </li>
-        <li>
-          <span class="feature-icon">🔓</span>
-          Доступно без ограничений
-        </li>
-        <li>
-          <span class="feature-icon">🎁</span>
-          Схема приёма в подарок!
-        </li>
-      </ul>
-
-      <div class="warning-box">
-        <strong>⚠️ Важно!</strong><br/>
-        Тест не предназначен для постановки диагноза заболевания, но поможет провести самооценку состояния здоровья. Обязательно обратитесь к врачу за дополнительной консультацией.
-      </div>
-
-      <a href="test.html" class="btn-primary" style="font-size:1.05rem;padding:15px 36px;">
-        Начать тест →
-      </a>
-    </div>
+  <!-- BANNER IMAGE -->
+  <div style="border-radius:var(--radius);overflow:hidden;margin-bottom:24px;">
+    <img src="pictures/стартовый баннер.jpg" alt="WELLLAB" style="width:100%;display:block;object-fit:cover;">
   </div>
 
-  <!-- DIRECTIONS BLOCK -->
-  <div style="margin-top:48px;">
-    <h2 class="section-title">
-      <span class="section-icon">🎯</span>
-      Доступные направления
-    </h2>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
-      <div style="background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius);padding:24px 20px;text-align:center;">
-        <div style="font-size:2.5rem;margin-bottom:10px;">🛡️</div>
-        <div style="font-weight:800;color:var(--text);margin-bottom:6px;">Иммунитет и энергия</div>
-        <div style="font-size:0.82rem;color:var(--text-muted);">3 программы по уровню нагрузки и образу жизни</div>
-      </div>
-      <div style="background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius);padding:24px 20px;text-align:center;">
-        <div style="font-size:2.5rem;margin-bottom:10px;">👁️</div>
-        <div style="font-weight:800;color:var(--text);margin-bottom:6px;">Зрение</div>
-        <div style="font-size:0.82rem;color:var(--text-muted);">2 программы для защиты и поддержки здоровья глаз</div>
-      </div>
-      <div style="background:var(--white);border:1.5px solid var(--border);border-radius:var(--radius);padding:24px 20px;text-align:center;">
-        <div style="font-size:2.5rem;margin-bottom:10px;">🌀</div>
-        <div style="font-weight:800;color:var(--text);margin-bottom:6px;">Очищение организма</div>
-        <div style="font-size:0.82rem;color:var(--text-muted);">3 программы детокса разной интенсивности</div>
-      </div>
-    </div>
+  <!-- DESCRIPTION -->
+  <p class="welcome-description" style="margin-bottom:8px;">
+    Прокладывайте путь к идеальному здоровью с удобным инструментом. Подберите эффективную программу БАД по наиболее актуальному для вас аспекту здоровья.
+  </p>
+  <p class="welcome-description" style="margin-bottom:20px;">
+    Тест разработан врачами-экспертами по продукции WELLLAB.
+  </p>
+
+  <!-- FEATURES -->
+  <ul class="welcome-features" style="margin-bottom:20px;">
+    <li>
+      <span class="feature-icon">●</span>
+      Тестирование займёт всего 5–7 минут.
+    </li>
+    <li>
+      <span class="feature-icon">●</span>
+      Доступно без ограничений
+    </li>
+    <li>
+      <span class="feature-icon">●</span>
+      Схема приёма в подарок!
+    </li>
+  </ul>
+
+  <!-- WARNING -->
+  <div class="warning-box" style="margin-bottom:28px;">
+    <strong>Важно!</strong><br/>
+    Тест не предназначен для постановки диагноза заболевания, но поможет провести самооценку состояния здоровья. Обязательно обратитесь к врачу за дополнительной консультацией.
   </div>
+
+  <!-- CTA -->
+  <div style="text-align:center;">
+    <a href="test.html" class="btn-primary" style="font-size:1.05rem;padding:15px 48px;">
+      Начать тест
+    </a>
+  </div>
+
 
 </main>
 
 <footer class="site-footer">
-  © 2025 WELLLAB. Все права защищены. Продукция не является лекарственным средством.
+  © 2026 Наталья Втюрина. ВКРБ. Автоматизация процесса подбора товаров в интернет-магазине
 </footer>
 
 </body>

@@ -3,17 +3,32 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Результаты теста — WELLLAB</title>
+  <title>Результаты теста</title>
+  <link rel="icon" type="image/png" href="pictures/favicon.png"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="styles.css"/>
+  <style>
+    .result-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 28px;
+      align-items: center;
+      margin-bottom: 36px;
+    }
+    @media (max-width: 760px) {
+      .result-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
 
 <header class="site-header">
   <a href="index.html" class="logo">
     <div class="logo-icon">🌿</div>
-    WELLLAB
+    Тест по подбору БАД
   </a>
   <nav class="header-nav">
     <a href="index.html">← На главную</a>
@@ -21,94 +36,55 @@
   </nav>
 </header>
 
-<main class="main-content" style="max-width:780px;">
+<main class="main-content" style="max-width:1200px;">
 
-  <!-- BREADCRUMBS -->
-  <nav class="breadcrumbs">
-    <a href="#">Главная</a>
-    <span class="sep">›</span>
-    <a href="index.html">Подбор БАД</a>
-    <span class="sep">›</span>
-    <span>Результаты теста</span>
-  </nav>
+  <!-- TITLE -->
+  <h1 class="page-title" style="text-align:center;margin-bottom:20px;">Вы успешно прошли тест!</h1>
 
-  <!-- RESULT HERO -->
-  <div class="result-hero">
-    <span class="result-check">✅</span>
-    <h1 class="result-title">Вы успешно прошли тест!</h1>
-    <p class="result-subtitle" id="result-desc">
-      На основе ваших ответов мы подобрали оптимальную программу БАД, которая поможет улучшить ваше самочувствие.
-    </p>
-    <div class="result-program-name" id="program-badge">Определяется...</div>
-  </div>
+  <!-- DESCRIPTION -->
+  <p id="result-desc" style="text-align:center;max-width:100%;margin:0 auto 32px;color:var(--text);line-height:1.7;font-size:0.97rem;">
+    На основе ваших ответов мы подобрали оптимальную программу БАД.
+  </p>
 
-  <!-- RECOMMENDATIONS -->
-  <div style="margin-bottom:28px;">
-    <div class="section-title">
-      <span class="section-icon">⭐</span>
-      Рекомендуем вам
-    </div>
+  <!-- РЕКОМЕНДУЕМ ВАМ -->
+  <h2 style="text-align:center;font-size:1.4rem;font-weight:700;margin-bottom:28px;color:var(--text);">Рекомендуем вам</h2>
 
-    <!-- Program image placeholder -->
-    <div style="background:linear-gradient(135deg,#d4ede1,#a8d4bc);border-radius:var(--radius);height:180px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;overflow:hidden;">
-      <div style="text-align:center;">
-        <div style="font-size:4rem;" id="program-emoji">🌿</div>
-        <div style="font-weight:800;color:var(--green-dark);margin-top:8px;font-size:1.1rem;" id="program-name-display">Ваша программа</div>
-      </div>
-    </div>
-  </div>
+  <!-- THREE-COLUMN -->
+  <div class="result-grid">
 
-  <!-- BENEFITS -->
-  <div style="margin-bottom:28px;">
-    <div class="section-title">
-      <span class="section-icon">💎</span>
-      Преимущества программы
-    </div>
-    <div class="benefits-grid" id="benefits-grid">
+    <!-- LEFT: BENEFITS -->
+    <div id="benefits-grid" style="display:flex;flex-direction:column;gap:12px;">
       <!-- Filled by JS -->
     </div>
-  </div>
 
-  <!-- COMPOSITION -->
-  <div style="margin-bottom:28px;">
-    <div class="section-title">
-      <span class="section-icon">📦</span>
-      Состав программы
+    <!-- CENTER: IMAGE -->
+    <div style="border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;">
+      <img src="pictures/products-banner.png" alt="Продукты WELLLAB" style="width:100%;display:block;object-fit:cover;">
     </div>
-    <div class="products-grid" id="products-grid">
-      <!-- Filled by JS -->
-    </div>
-  </div>
 
-  <!-- CTA -->
-  <div class="cta-block">
-    <div>
-      <div class="cta-total">
-        Итого: <span id="total-price">0 ₽</span>
+    <!-- RIGHT: PRODUCTS + DOWNLOAD -->
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div id="products-grid" style="display:flex;flex-direction:column;gap:10px;">
+        <!-- Filled by JS -->
       </div>
-      <div class="cta-sub">Стоимость выбранных товаров программы</div>
-    </div>
-    <div style="display:flex;gap:12px;flex-wrap:wrap;">
-      <a href="#" class="btn-download" id="btn-pdf" download>
+      <a href="#" class="btn-download" id="btn-pdf" download style="margin-top:4px;">
         📄 Скачать инструкцию
       </a>
-      <button class="btn-accent" id="btn-order" onclick="placeOrder()">
-        🛒 Оформить заказ
-      </button>
     </div>
+
   </div>
 
-  <!-- RESTART -->
-  <div style="text-align:center;margin-top:24px;">
-    <a href="test.html" class="btn-secondary" style="font-size:0.88rem;">
-      ↩ Пройти тест заново
-    </a>
+  <!-- ORDER BUTTON -->
+  <div style="text-align:center;margin-bottom:32px;">
+    <button class="btn-accent" id="btn-order" onclick="placeOrder()" style="font-size:1.1rem;padding:16px 48px;border-radius:50px;">
+      Оформить заказ: 0 ₽ 🛒
+    </button>
   </div>
 
 </main>
 
 <footer class="site-footer">
-  © 2025 WELLLAB. Все права защищены. Продукция не является лекарственным средством.
+  © 2026 Наталья Втюрина. ВКРБ. Автоматизация процесса подбора товаров в интернет-магазине
 </footer>
 
 <script>
@@ -117,132 +93,132 @@
 const PROGRAMS = {
   'Иммунитет и энергия 1': {
     emoji: '🛡️',
-    description: 'Отличный результат! Ваш иммунитет в хорошей форме. Базовая программа поддержит защитные силы организма и обеспечит стабильный уровень энергии на каждый день.',
+    description: 'Поздравляем! Ваша иммунная система достаточно сильна, чтобы активно защищать вас от вирусов и аллергенов. Ваше отношение к укреплению физической формы и здоровому образу жизни заслуживает уважения. Чтобы поддержать потенциал защиты организма от вирусов и повысить уровень энергии, рекомендуем профилактический прием программы БАД два раза в год.',
     benefits: [
-      'Поддержка естественного иммунитета',
-      'Профилактика сезонных ОРВИ',
-      'Заряд бодрости и энергии',
-      'Антиоксидантная защита клеток'
+      'Укрепление иммунитета',
+      'Энергия и тонус',
+      'Активное восстановление',
+      'Улучшение адаптации'
     ],
     products: [
-      { name: 'Иммуно Комплекс', article: 'WL-11201', price: 1890, icon: '🛡️' },
-      { name: 'Витамин C 1000', article: 'WL-11202', price: 1250, icon: '🍊' },
-      { name: 'Цинк + Селен', article: 'WL-11203', price: 980, icon: '⚡' }
+      { name: 'БАД с омега-3 в высокой концентрации Welllab OMEGA-3, 60 капсул', article: '#070707', price: 2710, icon: '🐟', url: 'https://greenwayglobal.com/shop/brands/welllab/070707' },
+      { name: 'Напиток с чагой для поддержки иммунитета Welllab Element Chaga Immunity Drink, 25 таблеток', article: '#07124', price: 960, icon: '🍄', url: 'https://greenwayglobal.com/shop/brands/welllab/07124' },
+      { name: 'БАД с органическим йодом Welllab МОРСКОЙ ЙОД, 30 таблеток', article: '#070761', price: 560, icon: '🌊', url: 'https://greenwayglobal.com/shop/brands/welllab/070761' },
+      { name: 'БАД для иммунитета Welllab ImmunoHIT ACTIVE, 60 капсул', article: '#070719', price: 1440, icon: '🛡️', url: 'https://greenwayglobal.com/shop/brands/welllab/070719' },
+      { name: 'Источник магния WELLLAB MAGNESIUM & VITAMIN B6, 90 таблеток', article: '#070742', price: 1280, icon: '💊', url: 'https://greenwayglobal.com/shop/brands/welllab/070742' }
     ]
   },
   'Иммунитет и энергия 2': {
     emoji: '🛡️',
-    description: 'Ваш иммунитет нуждается в дополнительной поддержке. Усиленная программа поможет восстановить защитные функции, наполнить организм энергией и повысить устойчивость к инфекциям.',
+    description: 'Ваши резервы защитных сил организма от инфекций, вирусов и аллергенов ослаблены. Пора позаботиться о своем иммунитете! Обязательно обратитесь к врачу, чтобы выявить причины сбоя в иммунной системе. Специально для вас мы подобрали программу, которая поможет укрепить защитные силы организма и вывести его из состояния дефицита энергии.',
     benefits: [
-      'Укрепление иммунного ответа',
-      'Борьба с хронической усталостью',
-      'Поддержка после антибиотиков',
-      'Антистрессовая защита'
+      'Укрепление иммунитета',
+      'Противовирусная защита',
+      'Антиоксидантная защита',
+      'Облегчение воспаления',
+      'Баланс микрофлоры',
+      'Энергия и тонус'
     ],
     products: [
-      { name: 'Иммуно Комплекс Форте', article: 'WL-11211', price: 2190, icon: '🛡️' },
-      { name: 'Витамин D3 + K2', article: 'WL-11212', price: 1490, icon: '☀️' },
-      { name: 'Омега-3 ДГК', article: 'WL-11213', price: 1790, icon: '🐟' },
-      { name: 'Цинк + Селен Актив', article: 'WL-11214', price: 1100, icon: '⚡' }
+      { name: 'БАД с пробиотиками и пребиотиками Welllab Synbiotic Forte, 60 капсул', article: '#070736', price: 1300, icon: '🦠', url: 'https://greenwayglobal.com/shop/brands/welllab/070736' },
+      { name: 'БАД с витамином D3 2000 МЕ Welllab VITAMIN D3 PLUS, 120 капсул', article: '#070762', price: 1600, icon: '☀️', url: 'https://greenwayglobal.com/shop/brands/welllab/070762' },
+      { name: 'БАД с цинком и селеном Welllab ZINC & SELENIUM, 30 таблеток', article: '#070754', price: 560, icon: '⚡', url: 'https://greenwayglobal.com/shop/brands/welllab/070754' },
+      { name: 'БАД с омега-3 в высокой концентрации Welllab OMEGA-3, 60 капсул', article: '#070707', price: 2710, icon: '🐟', url: 'https://greenwayglobal.com/shop/brands/welllab/070707' },
+      { name: 'БАД с незаменимой аминокислотой Welllab LYSINE PLUS, 60 капсул', article: '#070714', price: 1600, icon: '💊', url: 'https://greenwayglobal.com/shop/brands/welllab/070714' }
     ]
   },
   'Иммунитет и энергия 3': {
     emoji: '🛡️',
-    description: 'Ваш организм требует комплексного восстановления. Максимальная программа разработана для глубокой поддержки иммунитета, восстановления после заболеваний и зарядки энергией.',
+    description: 'Пришло время переосмыслить стиль жизни и усилить ваш иммунитет! Потенциал защиты организма от инфекций и аллергенов заметно снижен. Рекомендуем наладить режим сна и отдыха, сбалансировать питание, уменьшить влияние фактора стресса. Дополнительную поддержку вашему организму окажет специально подобранная программа БАД.',
     benefits: [
-      'Глубокое восстановление иммунитета',
-      'Устранение хронического дефицита витаминов',
-      'Энергетическая поддержка митохондрий',
-      'Противовоспалительный эффект',
-      'Восстановление микробиома'
+      'Укрепление иммунитета',
+      'Противовирусная защита',
+      'Антиоксидантная защита',
+      'Улучшение общего самочувствия'
     ],
     products: [
-      { name: 'Иммуно Комплекс Макс', article: 'WL-11221', price: 2590, icon: '🛡️' },
-      { name: 'Витамин D3 5000 МЕ', article: 'WL-11222', price: 1690, icon: '☀️' },
-      { name: 'Омега-3 Премиум', article: 'WL-11223', price: 2190, icon: '🐟' },
-      { name: 'Пробиотик Комплекс', article: 'WL-11224', price: 1890, icon: '🦠' },
-      { name: 'Коэнзим Q10', article: 'WL-11225', price: 2100, icon: '⚡' }
+      { name: 'БАД с омега-3 в высокой концентрации Welllab OMEGA-3, 60 капсул', article: '#070707', price: 2710, icon: '🐟', url: 'https://greenwayglobal.com/shop/brands/welllab/070707' },
+      { name: 'Природный концентрат с полипренолами Welllab liquid Prenovital, 25 мл', article: '#07058', price: 2380, icon: '✨', url: 'https://greenwayglobal.com/shop/brands/welllab-liquid/07058' },
+      { name: 'БАД с витамином D3 2000 МЕ Welllab VITAMIN D3 PLUS, 120 капсул', article: '#070762', price: 1600, icon: '☀️', url: 'https://greenwayglobal.com/shop/brands/welllab/070762' },
+      { name: 'БАД с витамином С Welllab C-COMPLEX PLUS, 60 капсул', article: '#070701', price: 1840, icon: '🍊', url: 'https://greenwayglobal.com/shop/brands/welllab/070701' }
     ]
   },
   'Зрение 1': {
     emoji: '👁️',
-    description: 'Ваши глаза в целом здоровы. Базовая программа для зрения обеспечит профилактическую поддержку и защиту от негативного воздействия экранов и ультрафиолета.',
+    description: 'В настоящий момент у вас не выявлено серьезных проблем, но современный образ жизни оказывает значительную нагрузку на состояние зрительного аппарата. Не забывайте заботиться о зрении: регулярно посещать офтальмолога, чаще делать упражнения для глаз и давать им отдых от мониторов и гаджетов. Прием программы БАД является одной из эффективных мер профилактики по снижению остроты зрения.',
     benefits: [
-      'Профилактика усталости глаз',
-      'Защита от синего света',
-      'Поддержка цветового зрения',
-      'Антиоксидантная защита сетчатки'
+      'Поддержание остроты зрения',
+      'Защита сетчатки глаз от фотоповреждения',
+      'Укрепление сосудов глаз',
+      'Снижение зрительного напряжения'
     ],
     products: [
-      { name: 'Черника Форте', article: 'WL-21101', price: 1390, icon: '🫐' },
-      { name: 'Лютеин + Зеаксантин', article: 'WL-21102', price: 1790, icon: '👁️' },
-      { name: 'Витамин А', article: 'WL-21103', price: 890, icon: '🥕' }
+      { name: 'БАД с омега-3 в высокой концентрации Welllab OMEGA-3, 60 капсул', article: '#070707', price: 2710, icon: '🐟', url: 'https://greenwayglobal.com/shop/brands/welllab/070707' },
+      { name: 'БАД с незаменимой аминокислотой Welllab LYSINE PLUS, 60 капсул', article: '#070714', price: 1600, icon: '💊', url: 'https://greenwayglobal.com/shop/brands/welllab/070714' }
     ]
   },
   'Зрение 2': {
     emoji: '👁️',
-    description: 'Ваши глаза испытывают повышенную нагрузку и нуждаются в серьёзной поддержке. Усиленная программа восстановит зрительные функции, снимет синдром сухого глаза и укрепит сосуды глаз.',
+    description: 'Ваш взгляд заслуживает должной заботы! Позаботьтесь о своей остроте зрения с помощью регулярных осмотров у офтальмолога. Старайтесь придерживаться принципов правильного питания, чаще делайте упражнения для глаз, обязательно давайте глазам отдых от мониторов и гаджетов. В качестве дополнительной меры поддержки предлагаем усиленную программу БАД для зрения.',
     benefits: [
-      'Устранение синдрома сухого глаза',
-      'Восстановление при напряжении зрения',
-      'Укрепление сосудов сетчатки',
-      'Снижение головной боли от экранов',
-      'Поддержка ночного зрения'
+      'Профилактика снижения остроты зрения',
+      'Улучшение светочувствительной функции сетчатки',
+      'Улучшение состояния сосудов глаз',
+      'Снижение зрительного напряжения'
     ],
     products: [
-      { name: 'Черника Форте Макс', article: 'WL-21111', price: 1890, icon: '🫐' },
-      { name: 'Лютеин Комплекс', article: 'WL-21112', price: 2190, icon: '👁️' },
-      { name: 'Омега-3 для зрения', article: 'WL-21113', price: 1790, icon: '🐟' },
-      { name: 'Витамин A + E', article: 'WL-21114', price: 990, icon: '🥕' }
+      { name: 'БАД с омега-3 в высокой концентрации Welllab OMEGA-3, 60 капсул', article: '#070707', price: 2710, icon: '🐟', url: 'https://greenwayglobal.com/shop/brands/welllab/070707' },
+      { name: 'БАД с незаменимой аминокислотой Welllab LYSINE PLUS, 60 капсул', article: '#070714', price: 1600, icon: '💊', url: 'https://greenwayglobal.com/shop/brands/welllab/070714' },
+      { name: 'БАД с дигидрокверцетином и витаминами Welllab DHQ COMPLEX, 60 капсул', article: '#070726', price: 1840, icon: '🐟', url: 'https://greenwayglobal.com/shop/brands/welllab/070726' }
     ]
   },
   'Очищение организма 1': {
     emoji: '🌀',
-    description: 'Ваш организм справляется хорошо, но небольшая детокс-поддержка пойдёт на пользу. Мягкая программа очистит организм и улучшит общее самочувствие.',
+    description: 'Детокс — полезная практика, которая помогает вывести из организма вредные вещества и улучшить самочувствие. У вас не выявлено выраженных признаков интоксикации организма, но вы можете своевременно пройти детокс-программу. Очень важен комплексный подход. Придерживайтесь принципов рационального и сбалансированного питания, выпивайте достаточное количество воды и не забывайте про физическую активность!',
     benefits: [
-      'Мягкое очищение печени',
-      'Улучшение работы кишечника',
-      'Выведение токсинов',
-      'Поддержка кожи изнутри'
+      'Детокс-программа',
+      'Регулярная работа кишечника',
+      'Контроль веса и аппетита',
+      'Баланс микрофлоры'
     ],
     products: [
-      { name: 'Детокс Лайт', article: 'WL-31101', price: 1590, icon: '🌿' },
-      { name: 'Клетчатка Пшеничная', article: 'WL-31102', price: 890, icon: '🌾' },
-      { name: 'Пробиотик Баланс', article: 'WL-31103', price: 1390, icon: '🦠' }
+      { name: 'БАД с пробиотиками и пребиотиками Welllab Synbiotic Forte, 60 капсул', article: '#070736', price: 1300, icon: '🦠', url: 'https://greenwayglobal.com/shop/brands/welllab/070736' },
+      { name: 'Пребиотический напиток BALANCER PREBIO MIX, 10 стиков', article: '#01246', price: 1060, icon: '🌾', url: 'https://greenwayglobal.com/shop/brands/balancer/01246' },
+      { name: 'Программа БАД WELLLAB DETOX PACK', article: '#070749', price: 1920, icon: '🌿', url: 'https://greenwayglobal.com/shop/brands/welllab/070749' }
     ]
   },
   'Очищение организма 2': {
     emoji: '🌀',
-    description: 'Вашему организму нужна активная поддержка. Программа среднего уровня комплексно очистит печень и кишечник, нормализует обмен веществ и улучшит состояние кожи.',
+    description: 'Ваши ответы говорят о том, что организм нуждается в дополнительной поддержке. Специально подобранная программа БАД поможет активизировать процессы естественной детоксикации, улучшить общее самочувствие и вернуть организм в форму. Очень важен комплексный подход. Придерживайтесь принципов рационального и сбалансированного питания, выпивайте достаточное количество воды и не забывайте про физическую активность!',
     benefits: [
-      'Активная детоксикация печени',
-      'Нормализация работы ЖКТ',
-      'Устранение кожных проявлений интоксикации',
-      'Борьба с лишним весом'
+      'Активный детокс',
+      'Поддержка печени',
+      'Регулярная работа кишечника',
+      'Контроль веса и аппетита',
+      'Баланс микрофлоры'
     ],
     products: [
-      { name: 'Детокс Актив', article: 'WL-31111', price: 2090, icon: '🌿' },
-      { name: 'Гепатопротектор Форте', article: 'WL-31112', price: 2390, icon: '🫀' },
-      { name: 'Пробиотик + Пребиотик', article: 'WL-31113', price: 1790, icon: '🦠' },
-      { name: 'Сорбент Природный', article: 'WL-31114', price: 990, icon: '🪨' }
+      { name: 'БАД для очищения организма Welllab COLOSTRUM DETOX, 60 капсул', article: '#070729', price: 2230, icon: '🌿', url: 'https://greenwayglobal.com/shop/brands/welllab/070729' },
+      { name: 'БАД для поддержки углеводного обмена Welllab ANTISWEET CONTROL, 60 капсул', article: '#070728', price: 1920, icon: '🍃', url: 'https://greenwayglobal.com/shop/brands/welllab/070728' },
+      { name: 'БАД с пробиотиками и пребиотиками Welllab Synbiotic Forte, 60 капсул', article: '#070736', price: 1300, icon: '🦠', url: 'https://greenwayglobal.com/shop/brands/welllab/070736' },
+      { name: 'БАД с натуральными фосфолипидами Welllab LECITHIN, 60 капсул', article: '#070717', price: 990, icon: '💊', url: 'https://greenwayglobal.com/shop/brands/welllab/070717' },
+      { name: 'Напиток для контроля аппетита BALANCER BAOBAB FORTE, 10 стиков', article: '#012620', price: 1590, icon: '🌳', url: 'https://greenwayglobal.com/shop/brands/balancer/012620' }
     ]
   },
   'Очищение организма 3': {
     emoji: '🌀',
-    description: 'Ваш организм накопил значительную нагрузку токсинов. Интенсивная программа детоксикации полностью восстановит функции печени, кишечника и нормализует состояние кожи.',
+    description: 'Рекомендуем вам пройти комплексную детоксикационную и антипаразитарную программу. Очищение организма от внутренних и внешних токсинов, а также паразитов и продуктов их жизнедеятельности, поможет уменьшить проявление аллергических реакций, укрепить иммунитет и улучшить общее самочувствие. Очень важен комплексный подход. Придерживайтесь принципов рационального и сбалансированного питания, выпивайте достаточное количество воды и не забывайте про физическую активность!',
     benefits: [
-      'Глубокая детоксикация организма',
-      'Полное восстановление микробиома',
-      'Интенсивная поддержка печени',
-      'Борьба с хронической интоксикацией',
-      'Оздоровление кожи и волос'
+      'Очищение и защита от паразитов',
+      'Снижение воспалений',
+      'Поддержка печени',
+      'Повышение сопротивляемости организма к инфекциям'
     ],
     products: [
-      { name: 'Детокс Максимум', article: 'WL-31121', price: 2790, icon: '🌿' },
-      { name: 'Гепатопротектор Плюс', article: 'WL-31122', price: 2790, icon: '🫀' },
-      { name: 'Синбиотик Комплекс', article: 'WL-31123', price: 2190, icon: '🦠' },
-      { name: 'Сорбент + Клетчатка', article: 'WL-31124', price: 1290, icon: '🪨' },
-      { name: 'Куркумин Актив', article: 'WL-31125', price: 1890, icon: '🌸' }
+      { name: 'БАД с антипаразитарным действием Welllab ANTIGELM PHYTO, 60 капсул', article: '#070700', price: 1840, icon: '🌿', url: 'https://greenwayglobal.com/shop/brands/welllab/070700' },
+      { name: 'БАД для поддержки иммунитета Welllab UNCARIA FORTE, 60 капсул', article: '#070705', price: 1920, icon: '🌿', url: 'https://greenwayglobal.com/shop/brands/welllab/070705' },
+      { name: 'БАД с противогрибковым действием Welllab FUNGISTOP PHYTO, 60 капсул', article: '#070704', price: 1920, icon: '🍃', url: 'https://greenwayglobal.com/shop/brands/welllab/070704' },
+      { name: 'БАД для антиоксидантной защиты Welllab ANTISOR ACTIVE, 60 капсул', article: '#070702', price: 1920, icon: '🌿', url: 'https://greenwayglobal.com/shop/brands/welllab/070702' }
     ]
   }
 };
@@ -261,8 +237,6 @@ function init() {
   }
 
   const result = JSON.parse(raw);
-  document.getElementById('program-badge').textContent = result.program;
-
   const prog = PROGRAMS[result.program];
   if (!prog) {
     loadProgram('Иммунитет и энергия 2', 'Иммунитет и энергия');
@@ -278,64 +252,66 @@ function loadProgram(programKey, topic) {
 
   // Update hero
   document.getElementById('result-desc').textContent = prog.description;
-  document.getElementById('program-badge').textContent = programKey;
-  document.getElementById('program-emoji').textContent = prog.emoji;
-  document.getElementById('program-name-display').textContent = programKey;
 
-  // Benefits
-  const grid = document.getElementById('benefits-grid');
-  grid.innerHTML = prog.benefits.map(b => `
-    <div class="benefit-card">
-      <span class="benefit-dot"></span>
-      ${b}
-    </div>
+  // Benefits — цветные пилюли
+  const benefitColors = ['#F5A623','#5BC8DC','#F08080','#90C878','#A78BFA','#FBB040'];
+  const bGrid = document.getElementById('benefits-grid');
+  bGrid.innerHTML = prog.benefits.map((b, i) => `
+    <div style="
+      background:${benefitColors[i % benefitColors.length]};
+      color:#fff;
+      font-weight:600;
+      font-size:0.92rem;
+      text-align:center;
+      padding:14px 18px;
+      border-radius:50px;
+      line-height:1.3;
+    ">${b}</div>
   `).join('');
 
-  // Products
-  checkedProducts = prog.products.map(() => true);
-  renderProducts(prog);
-}
+  // Products — текстовые блоки
+  const pGrid = document.getElementById('products-grid');
+  pGrid.innerHTML = prog.products.map(p => {
+    const inner = `<div style="
+      background:var(--white);
+      border:1.5px solid var(--border);
+      border-radius:var(--radius-sm);
+      padding:12px 16px;
+      font-size:0.82rem;
+      font-weight:700;
+      color:var(--text);
+      text-transform:uppercase;
+      line-height:1.4;
+    ">${p.name}</div>`;
+    return p.url
+      ? `<a href="${p.url}" target="_blank" style="text-decoration:none;">${inner}</a>`
+      : inner;
+  }).join('');
 
-function renderProducts(prog) {
-  const grid = document.getElementById('products-grid');
-  grid.innerHTML = prog.products.map((p, i) => `
-    <div class="product-card" id="product-${i}">
-      <div class="product-checkbox ${checkedProducts[i] ? '' : 'unchecked'}" id="chk-${i}" onclick="toggleProduct(${i})">
-        ${checkedProducts[i] ? `<svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M2 7L5.5 10.5L12 4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>` : ''}
-      </div>
-      <div class="product-icon">${p.icon}</div>
-      <div class="product-info">
-        <div class="product-name">${p.name}</div>
-        <div class="product-article">Арт. ${p.article}</div>
-      </div>
-      <div class="product-price">${p.price.toLocaleString('ru-RU')} ₽</div>
-    </div>
-  `).join('');
+  // Instruction file
+  const instructionFiles = {
+    'Иммунитет и энергия 1': 'insructions/ИММУНИТЕТ и ЭНЕРГИЯ 1.pdf',
+    'Иммунитет и энергия 2': 'insructions/ИММУНИТЕТ и ЭНЕРГИЯ 2.pdf',
+    'Иммунитет и энергия 3': 'insructions/ИММУНИТЕТ и ЭНЕРГИЯ 3.pdf',
+    'Зрение 1':               'insructions/ЗРЕНИЕ 1.pdf',
+    'Зрение 2':               'insructions/ЗРЕНИЕ 2.pdf',
+    'Очищение организма 1':   'insructions/ОЧИЩЕНИЕ 1.pdf',
+    'Очищение организма 2':   'insructions/ОЧИЩЕНИЕ 2.pdf',
+    'Очищение организма 3':   'insructions/ОЧИЩЕНИЕ 3.pdf',
+  };
+  const pdfBtn = document.getElementById('btn-pdf');
+  pdfBtn.href = instructionFiles[programKey] || '#';
+  pdfBtn.target = '_blank';
+  pdfBtn.removeAttribute('download');
 
-  updateTotal(prog);
-}
-
-function toggleProduct(i) {
-  checkedProducts[i] = !checkedProducts[i];
-  const prog = PROGRAMS[currentProgram];
-  renderProducts(prog);
-}
-
-function updateTotal(prog) {
-  let total = 0;
-  prog.products.forEach((p, i) => {
-    if (checkedProducts[i]) total += p.price;
-  });
-  document.getElementById('total-price').textContent = total.toLocaleString('ru-RU') + ' ₽';
-  document.getElementById('btn-order').textContent = `🛒 Оформить заказ: ${total.toLocaleString('ru-RU')} ₽`;
+  // Total in button
+  const total = prog.products.reduce((sum, p) => sum + p.price, 0);
+  document.getElementById('btn-order').textContent = `Оформить заказ: ${total.toLocaleString('ru-RU')} ₽ 🛒`;
 }
 
 function placeOrder() {
   const prog = PROGRAMS[currentProgram];
-  const selected = prog.products.filter((p, i) => checkedProducts[i]);
-  const names = selected.map(p => p.name).join(', ');
+  const names = prog.products.map(p => p.name).join(', ');
   alert(`Заказ оформляется!\n\nТовары: ${names}\n\nВ реальном сайте здесь откроется страница оформления заказа.`);
 }
 
