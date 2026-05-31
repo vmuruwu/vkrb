@@ -1,4 +1,3 @@
-/* ===== CSS VARIABLES ===== */
 :root {
   --green: #74c044;
   --green-dark: #5a9633;
@@ -6,10 +5,10 @@
   --green-mid: #8ecf62;
   --accent: #f0a500;
   --accent-light: #fff8e7;
-  --text: #1e3a0e;
-  --text-muted: #4a6a2e;
+  --text: #323232;
+  --text-muted: #323232;
   --border: #c2e09e;
-  --bg: #f4faf0;
+  --bg: #ffffff;
   --white: #ffffff;
   --red: #d94040;
   --red-light: #fdf0f0;
@@ -21,10 +20,11 @@
   --radius-sm: 8px;
 }
 
-/* ===== RESET & BASE ===== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html { font-size: 16px; scroll-behavior: smooth; }
+
+h1, h2, h3, h4, h5, h6 { color: #323232; }
 
 body {
   font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
@@ -84,7 +84,6 @@ body {
 }
 .header-nav a:hover { color: var(--green); }
 
-/* ===== BREADCRUMBS ===== */
 .breadcrumbs {
   display: flex;
   align-items: center;
@@ -97,7 +96,6 @@ body {
 .breadcrumbs a:hover { text-decoration: underline; }
 .breadcrumbs .sep { color: var(--gray-light); }
 
-/* ===== MAIN LAYOUT ===== */
 .main-content {
   flex: 1;
   max-width: 1000px;
@@ -106,7 +104,6 @@ body {
   padding: 40px 24px 80px;
 }
 
-/* ===== WELCOME PAGE ===== */
 .welcome-hero {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -146,7 +143,7 @@ body {
 .page-title {
   font-size: 1.9rem;
   font-weight: 800;
-  color: var(--text);
+  color: #323232;
   line-height: 1.25;
   margin-bottom: 20px;
   letter-spacing: -0.5px;
@@ -192,7 +189,7 @@ body {
 
 .warning-box {
   background: #fff8ee;
-  border: 1.5px solid #ff9900;
+  border: none;
   border-radius: var(--radius-sm);
   padding: 14px 20px;
   font-size: 0.85rem;
@@ -204,7 +201,6 @@ body {
 
 .warning-box strong { font-weight: 800; }
 
-/* ===== BUTTONS ===== */
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -279,7 +275,6 @@ body {
   transform: translateY(-1px);
 }
 
-/* ===== STEPPER ===== */
 .stepper-wrap {
   margin-bottom: 32px;
 }
@@ -364,7 +359,6 @@ body {
   margin-bottom: 20px;
 }
 
-/* ===== INPUT FIELDS ===== */
 .input-field {
   width: 100%;
   max-width: 100%;
@@ -399,7 +393,6 @@ body {
 
 .input-hint.visible { display: block; }
 
-/* ===== RADIO OPTIONS ===== */
 .options-list {
   display: flex;
   flex-direction: column;
@@ -457,7 +450,6 @@ body {
   border-radius: 50%;
 }
 
-/* ===== NAV BUTTONS ===== */
 .nav-buttons {
   display: flex;
   gap: 12px;
@@ -478,35 +470,10 @@ body {
   margin-top: 4px;
 }
 
-/* ===== RESULT PAGE ===== */
 .result-hero {
-  background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
-  border-radius: var(--radius);
-  padding: 40px;
-  color: white;
-  text-align: center;
   margin-bottom: 32px;
-  position: relative;
-  overflow: hidden;
 }
 
-.result-hero::before {
-  content: '';
-  position: absolute;
-  top: -40px; right: -40px;
-  width: 180px; height: 180px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.07);
-}
-
-.result-hero::after {
-  content: '';
-  position: absolute;
-  bottom: -60px; left: -20px;
-  width: 220px; height: 220px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.05);
-}
 
 .result-check {
   font-size: 3.5rem;
@@ -540,7 +507,6 @@ body {
   letter-spacing: 0.5px;
 }
 
-/* Section titles */
 .section-title {
   font-size: 1.15rem;
   font-weight: 800;
@@ -562,7 +528,6 @@ body {
   font-size: 0.9rem;
 }
 
-/* Benefits */
 .benefits-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -593,7 +558,6 @@ body {
   margin-top: 4px;
 }
 
-/* Products */
 .products-grid {
   display: flex;
   flex-direction: column;
@@ -666,7 +630,6 @@ body {
   white-space: nowrap;
 }
 
-/* CTA block */
 .cta-block {
   background: var(--white);
   border: 1.5px solid var(--border);
@@ -717,7 +680,6 @@ body {
   color: var(--green);
 }
 
-/* ===== FOOTER ===== */
 .site-footer {
   background: var(--white);
   border-top: 1.5px solid var(--border);
@@ -727,12 +689,11 @@ body {
   color: var(--text-muted);
 }
 
-/* ===== RESPONSIVE ===== */
 @media (max-width: 700px) {
   .welcome-hero { grid-template-columns: 1fr; }
   .question-card { padding: 24px 20px; }
   .cta-block { flex-direction: column; align-items: flex-start; }
-  .result-hero { padding: 28px 20px; }
+  .result-hero { margin-bottom: 24px; }
   .site-header { padding: 0 16px; }
   .main-content { padding: 24px 16px 60px; }
   .header-nav { display: none; }
