@@ -1,3 +1,4 @@
+/* ===== CSS VARIABLES ===== */
 :root {
   --green: #74c044;
   --green-dark: #5a9633;
@@ -20,6 +21,7 @@
   --radius-sm: 8px;
 }
 
+/* ===== RESET & BASE ===== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html { font-size: 16px; scroll-behavior: smooth; }
@@ -84,6 +86,7 @@ body {
 }
 .header-nav a:hover { color: var(--green); }
 
+/* ===== BREADCRUMBS ===== */
 .breadcrumbs {
   display: flex;
   align-items: center;
@@ -96,6 +99,7 @@ body {
 .breadcrumbs a:hover { text-decoration: underline; }
 .breadcrumbs .sep { color: var(--gray-light); }
 
+/* ===== MAIN LAYOUT ===== */
 .main-content {
   flex: 1;
   max-width: 1000px;
@@ -104,6 +108,7 @@ body {
   padding: 40px 24px 80px;
 }
 
+/* ===== WELCOME PAGE ===== */
 .welcome-hero {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -201,6 +206,7 @@ body {
 
 .warning-box strong { font-weight: 800; }
 
+/* ===== BUTTONS ===== */
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -275,6 +281,7 @@ body {
   transform: translateY(-1px);
 }
 
+/* ===== STEPPER ===== */
 .stepper-wrap {
   margin-bottom: 32px;
 }
@@ -311,7 +318,7 @@ body {
   flex: 1;
   height: 6px;
   border-radius: 3px;
-  background: var(--gray-light);
+  background: #D1D5DB;
   transition: background 0.3s;
 }
 
@@ -359,6 +366,7 @@ body {
   margin-bottom: 20px;
 }
 
+/* ===== INPUT FIELDS ===== */
 .input-field {
   width: 100%;
   max-width: 100%;
@@ -393,6 +401,7 @@ body {
 
 .input-hint.visible { display: block; }
 
+/* ===== RADIO OPTIONS ===== */
 .options-list {
   display: flex;
   flex-direction: column;
@@ -450,6 +459,7 @@ body {
   border-radius: 50%;
 }
 
+/* ===== NAV BUTTONS ===== */
 .nav-buttons {
   display: flex;
   gap: 12px;
@@ -470,6 +480,7 @@ body {
   margin-top: 4px;
 }
 
+/* ===== RESULT PAGE ===== */
 .result-hero {
   margin-bottom: 32px;
 }
@@ -507,6 +518,7 @@ body {
   letter-spacing: 0.5px;
 }
 
+/* Section titles */
 .section-title {
   font-size: 1.15rem;
   font-weight: 800;
@@ -528,6 +540,7 @@ body {
   font-size: 0.9rem;
 }
 
+/* Benefits */
 .benefits-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -558,6 +571,7 @@ body {
   margin-top: 4px;
 }
 
+/* Products */
 .products-grid {
   display: flex;
   flex-direction: column;
@@ -630,6 +644,7 @@ body {
   white-space: nowrap;
 }
 
+/* CTA block */
 .cta-block {
   background: var(--white);
   border: 1.5px solid var(--border);
@@ -680,6 +695,7 @@ body {
   color: var(--green);
 }
 
+/* ===== FOOTER ===== */
 .site-footer {
   background: var(--white);
   border-top: 1.5px solid var(--border);
@@ -689,6 +705,7 @@ body {
   color: var(--text-muted);
 }
 
+/* ===== RESPONSIVE ===== */
 @media (max-width: 700px) {
   .welcome-hero { grid-template-columns: 1fr; }
   .question-card { padding: 24px 20px; }
