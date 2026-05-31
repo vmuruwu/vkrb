@@ -110,7 +110,7 @@ function renderQuestion() {
   const q = qs[state.currentQ];
   const total = qs.length;
 
-  // Stepper
+
   const t1 = document.getElementById('track-1');
   const t2 = document.getElementById('track-2');
   if (state.currentStep === 1) {
