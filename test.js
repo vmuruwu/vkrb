@@ -1,3 +1,4 @@
+// ===================== DATA =====================
 
 const STEP1_QUESTIONS = [
   {
@@ -92,6 +93,7 @@ const SCORE_RANGES = {
   ]
 };
 
+// ===================== STATE =====================
 const state = {
   currentStep: 1,
   currentQ: 0,
@@ -101,6 +103,7 @@ const state = {
   step1Completed: false,
 };
 
+// ===================== RENDER =====================
 function getCurrentQuestions() {
   return state.currentStep === 1 ? STEP1_QUESTIONS : state.step2Questions;
 }
@@ -110,7 +113,7 @@ function renderQuestion() {
   const q = qs[state.currentQ];
   const total = qs.length;
 
-
+  // Stepper
   const t1 = document.getElementById('track-1');
   const t2 = document.getElementById('track-2');
   if (state.currentStep === 1) {
@@ -126,7 +129,7 @@ function renderQuestion() {
   document.getElementById('question-counter').textContent = `Вопрос ${state.currentQ + 1} / ${total}`;
   document.getElementById('q-text').textContent = q.text;
 
-
+  // Question image
   const imgWrap = document.getElementById('question-image-wrap');
   const img = document.getElementById('question-image');
   const anketa  = ['s1q1','s1q2','s1q3','s1q4'];
@@ -323,9 +326,40 @@ function calculateResult() {
   };
 }
 
-
+// ===================== EVENT LISTENERS =====================
 document.getElementById('btn-next').addEventListener('click', goNext);
 document.getElementById('btn-back').addEventListener('click', goBack);
 
+// ===================== MODAL =====================
+let pendingHref = null;
 
+function showExitModal(href) {
+  pendingHref = href;
+  document.getElementById('exit-modal').classList.add('active');
+}
+
+function hideExitModal() {
+  document.getElementById('exit-modal').classList.remove('active');
+  pendingHref = null;
+}
+
+document.querySelectorAll('.nav-guard').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    showExitModal(link.href);
+  });
+});
+
+document.getElementById('modal-btn-yes').addEventListener('click', () => {
+  if (pendingHref) window.location.href = pendingHref;
+});
+
+document.getElementById('modal-btn-no').addEventListener('click', hideExitModal);
+document.getElementById('modal-close-x').addEventListener('click', hideExitModal);
+
+document.getElementById('exit-modal').addEventListener('click', e => {
+  if (e.target === document.getElementById('exit-modal')) hideExitModal();
+});
+
+// ===================== INIT =====================
 renderQuestion();

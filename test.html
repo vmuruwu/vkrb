@@ -22,43 +22,114 @@
       gap: 0;
     }
     @media (max-width: 760px) {
-      .test-layout {
-        flex-direction: column;
-      }
-      #question-image-wrap {
-        width: 100% !important;
-      }
-      #question-image {
-        width: 100% !important;
-        height: 220px !important;
-      }
+      .test-layout { flex-direction: column; }
+      #question-image-wrap { width: 100% !important; }
+      #question-image { width: 100% !important; height: 220px !important; }
     }
+
+    /* ===== MODAL ===== */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-overlay.active {
+      display: flex;
+    }
+    .modal-box {
+      background: #fff;
+      border-radius: 14px;
+      padding: 56px 40px 28px;
+      max-width: 480px;
+      width: 90%;
+      position: relative;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+      text-align: center;
+    }
+    .modal-close {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      background: none;
+      border: none;
+      font-size: 1.3rem;
+      color: #9CA3AF;
+      cursor: pointer;
+      line-height: 1;
+      padding: 4px;
+    }
+    .modal-close:hover { color: #6B7280; }
+    .modal-text {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #323232;
+      line-height: 1.55;
+      margin-bottom: 28px;
+      text-align: center;
+    }
+    .modal-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
+    .modal-btn-yes, .modal-btn-no {
+      min-width: 120px;
+      border-radius: 50px;
+      padding: 12px 32px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+    }
+    .modal-btn-yes {
+      background: #74c044;
+      color: #fff;
+      border: none;
+      transition: background 0.2s;
+    }
+    .modal-btn-yes:hover { background: #5a9633; }
+    .modal-btn-no {
+      background: #fff;
+      color: #74c044;
+      border: 2px solid #74c044;
+      transition: background 0.2s, color 0.2s;
+    }
+    .modal-btn-no:hover { background: #eef7e6; }
   </style>
 </head>
 <body>
 
 <header class="site-header">
-  <a href="index.html" class="logo">
+  <a href="index.html" class="logo nav-guard">
     <div class="logo-icon">🌿</div>
     Тест по подбору БАД
   </a>
   <nav class="header-nav">
-    <a href="index.html">← Вернуться на главную</a>
+    <a href="index.html" class="nav-guard">← Вернуться на главную</a>
   </nav>
 </header>
 
 <main class="main-content" style="max-width:1000px;">
 
+  <!-- TITLE -->
   <h1 class="page-title" style="margin-bottom:24px;">Онлайн тест</h1>
 
+  <!-- TWO-COLUMN ROW -->
   <div class="test-layout">
 
+    <!-- LEFT: IMAGE -->
     <div id="question-image-wrap" style="display:none;flex-shrink:0;width:340px;">
       <img id="question-image" src="" alt="" style="width:340px;height:340px;object-fit:cover;border-radius:var(--radius);display:block;">
     </div>
 
+    <!-- RIGHT: STEPPER + QUESTION + NAV -->
     <div class="test-right">
 
+      <!-- STEPPER -->
       <div style="margin-bottom:20px;">
         <div style="font-weight:700;font-size:1.1rem;color:var(--text);margin-bottom:10px;" id="step-label">Шаг 1/2</div>
         <div class="stepper-bar" style="margin-bottom:10px;">
@@ -68,12 +139,13 @@
         <span style="font-size:0.88rem;color:var(--text-muted);" id="question-counter">Вопрос 1 / 10</span>
       </div>
 
+      <!-- QUESTION CARD -->
       <div class="question-card" id="question-card" style="margin-bottom:20px;">
         <div class="question-text" id="q-text">Загрузка...</div>
         <div id="q-answer-area"></div>
       </div>
 
-  
+      <!-- NAV -->
       <div class="nav-buttons">
         <div class="nav-left">
           <button class="btn-secondary" id="btn-back" disabled>Назад</button>
@@ -89,6 +161,18 @@
 <footer class="site-footer">
   © 2026 Наталья Втюрина. ВКРБ. Автоматизация процесса подбора товаров в интернет-магазине
 </footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="exit-modal">
+  <div class="modal-box">
+    <button class="modal-close" id="modal-close-x">✕</button>
+    <p class="modal-text">Ваши ответы на вопросы не сохранятся, вы уверены, что хотите продолжить?</p>
+    <div class="modal-buttons">
+      <button class="modal-btn-no" id="modal-btn-no">Нет</button>
+      <button class="modal-btn-yes" id="modal-btn-yes">Да</button>
+    </div>
+  </div>
+</div>
 
 <script src="test.js"></script>
 
